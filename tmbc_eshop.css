@@ -1,0 +1,120 @@
+/*
+	botiga.css
+	2012-01-13 11:44:18 
+*/
+
+/* =============================================================================
+   @notificacions
+   ========================================================================== */
+
+#notificacions {
+    position: fixed;
+    z-index: 6101;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 50px;
+    height:50px;
+    color:white;
+    overflow: hidden;
+    -webkit-box-shadow: 0 0 5px black;
+    -moz-box-shadow:    0 0 5px black;
+    box-shadow:         0 0 5px black;
+    font-weight:bold;
+}
+
+#notificacions[error] {
+ background: #cc2f0d;
+}
+
+#notificacions[ok] {
+ background: #2F7302;
+}
+
+@-webkit-keyframes slideDown {
+	0%, 100% { -webkit-transform: translateY(-50px); }
+	10%, 90% { -webkit-transform: translateY(0px); }
+}
+@-moz-keyframes slideDown {
+	0%, 100% { -moz-transform: translateY(-50px); }
+	10%, 90% { -moz-transform: translateY(0px); }
+}
+
+.cssanimations.csstransforms #notificacions {
+	-webkit-transform: translateY(-50px);
+	-webkit-animation: slideDown 5.5s 0s 1 ease forwards;
+	-moz-transform:    translateY(-50px);
+	-moz-animation:    slideDown 5.5s 0s 1 ease forwards;
+}
+
+.cssanimations.csstransforms #close {
+  display: none;
+}
+
+#close { cursor:pointer }
+
+
+/* =============================================================================
+   @paginacio
+   ========================================================================== */
+
+.ts_paginacio {
+	list-style-type:none;
+	font-family: Tahoma, Arial, sans-serif;
+	font-size:10px;
+	padding:0;
+	margin-left:10px;
+	text-align:right;
+}
+.ts_paginacio span, .ts_paginacio a {   margin:3px 0px; }
+.ts_paginacio a {
+	padding:3px 6px;
+	font-weight:normal;
+	border:1px solid #DED9CF;
+	background-color:#DED9CF;
+	color:#544B36;
+	margin-right:2px;
+	text-decoration:none;
+   -webkit-transition: all 0.3s ease-in-out;
+   -moz-transition: all 0.3s ease-in-out;
+   -o-transition: all 0.3s ease-in-out;
+   -ms-transition: all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;		
+}
+
+.ts_paginacio span { padding:3px; font-weight:normal; margin-right:2px; }
+.ts_paginacio a:hover { background-color:#73a6f7; border:1px solid #73a6f7; color:#ffffff; }
+.ts_paginacio .active { border:1px solid #fff; color:#ffffff; background-color:#73a6f7; text-decoration:none; }
+.ts_paginacio .inactiu { padding:3px 5px; margin:-1px 3px 0px 0px; border:1px solid #E8E8E8; color:#C8C8C8; font-weight:bold; background-color:#E8E8E8 }
+
+
+/* =============================================================================
+   @galeria
+   ========================================================================== */
+
+
+
+.ts_galeria:before,.ts_galeria:after{content:"";display:table}.ts_galeria:after{clear:both}.ts_galeria{zoom:1}
+
+/* detalls del producte */
+
+.ts_prod_container_img, .ts_prod_main { float:left }
+
+.ts_prod_container_img { text-align:center; width:45%}
+
+.ts_prod_main { width:55% }
+
+.ts_prod_main > div, .ts_prod_main h2 { margin-left:10px; }
+
+/* llistat dels productes */
+.ts_prod_img { text-align:center; border:1px solid gray; width:107px; height:107px; }
+.ts_galeria_producte { width:107px; float:left; margin-left:20px; height:165px; max-height:165px; }
+.ts_prod_nom { text-overflow: ellipsis; width:107px; overflow:hidden; font-size:10px }
+.ts_prod_preu { text-overflow: ellipsis; width:107px; overflow:hidden; font-size:9px; color:#24398a; }
+
+
+
+
