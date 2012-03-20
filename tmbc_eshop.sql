@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `ts_clients` (
   `estat` enum('0','1') NOT NULL DEFAULT '0' COMMENT '0 -> deshabilitat | 1-> habilitat',
   UNIQUE KEY `id` (`id_client`),
   UNIQUE KEY `correu` (`correu`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
