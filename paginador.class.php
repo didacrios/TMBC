@@ -14,7 +14,7 @@
 
    Paginador de resultats
 
-   Última modificació # Dídac Rios # 23-02-2012 15:15:24 # 
+   Última modificació # Dídac Rios # 20-03-2012 16:25:27 # 
 
    	$pagina = new ts_paginador('ofertes'); 		// creem nou objecte, indicant la taula amb la que treballarem (ha d'haver una connexió mysql oberta)
 
@@ -170,8 +170,6 @@ class ts_paginador {
 					</a>				
 				';
 			}
-
-//			echo "<h1>$mostrarmax</h1>";
 			
 			$pap5 = $pagina_actual + $mostrarmax; // pagina actual + LES QUE VOLGUEM
 			$pam5 = $pagina_actual - $mostrarmax; // pagina actual - LES QUE VOLGUEM
