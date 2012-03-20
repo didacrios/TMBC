@@ -27,7 +27,27 @@
    transition: all 0.3s ease-in-out;		
 }
 
-.ts_paginacio span { padding:3px; font-weight:normal; margin-right:2px; }
-.ts_paginacio a:hover { background-color:#73a6f7; border:1px solid #73a6f7; color:#ffffff; }
-.ts_paginacio .active { border:1px solid #fff; color:#ffffff; background-color:#73a6f7; text-decoration:none; }
-.ts_paginacio .inactiu { padding:3px 5px; margin:-1px 3px 0px 0px; border:1px solid #E8E8E8; color:#C8C8C8; font-weight:bold; background-color:#E8E8E8 }
+.ts_paginacio span {
+	padding:3px;
+	font-weight:normal;
+	margin-right:2px;
+}
+.ts_paginacio a:hover {
+	background-color:#73a6f7;
+	border:1px solid #73a6f7;
+	color:#ffffff;
+}
+.ts_paginacio .active {
+	border:1px solid #fff;
+	color:#ffffff;
+	background-color:#73a6f7;
+	text-decoration:none
+}
+.ts_paginacio .inactiu {
+	padding:3px 5px;
+	margin:-1px 3px 0px 0px;
+	border:1px solid #E8E8E8;
+	color:#C8C8C8;
+	font-weight:bold;
+	background-color:#E8E8E8
+}
