@@ -236,18 +236,22 @@ INSERT INTO `ts_idiomes` (`id_idioma`, `nom`, `iso`, `locale`, `format_data`) VA
 CREATE TABLE IF NOT EXISTS `ts_tipus_pagaments` (
   `id_tp` int(11) NOT NULL,
   `id_idioma` int(11) NOT NULL,
-  `nom` varchar(32) NOT NULL
+  `nom` varchar(32) NOT NULL,
+  `rutamodul` text NOT NULL,
+  PRIMARY KEY (`id_tp`,`id_idioma`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Bolcant dades de la taula `ts_tipus_pagaments`
 --
 
-INSERT INTO `ts_tipus_pagaments` (`id_tp`, `id_idioma`, `nom`) VALUES
-(1, 1, 'Transferència bancària'),
-(1, 2, 'Transferencia bancaria'),
-(2, 1, 'Contra reembossament'),
-(2, 2, 'Contra reembolso');
+INSERT INTO `ts_tipus_pagaments` (`id_tp`, `id_idioma`, `nom`, `rutamodul`) VALUES
+(1, 1, 'Transferència bancària', 'modulpagament/transferencia.php'),
+(1, 2, 'Transferencia bancaria', 'modulpagament/transferencia.php'),
+(2, 1, 'Contra reembossament', 'modulpagament/reembossament.php'),
+(2, 2, 'Contra reembolso', 'modulpagament/reembossament.php'),
+(3, 1, 'Targeta de crèdit', 'modulpagament/targetacredit.php'),
+(3, 2, 'Tarjeta de crédito', 'modulpagament/targetacredit.php');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
