@@ -1,8 +1,8 @@
 Utilitats per als projectes de TMBC
 =========
 
-#### paginador.class.php
-#### paginador.css
+- paginador.class.php
+- paginador.css
 
 Classe en PHP que pagina els registres d'una taula en MySQL amb l'opció de configurar:
 			- nom de la taula
@@ -17,15 +17,15 @@ Crea els enllaços a les diferents pàgines, aquests es poden configurar mitjan�
 -------------------------
 
 
-#### notificacions.css
-#### notificacions.js
+- notificacions.css
+- notificacions.js
 
 Crea notificacions dinàmiques amb HTML5 i CSS3, notificacions d'error i de confirmació
 
-<code>
-		<div id=notificacions ok>Missatge</div>
-		<div id=notificacions error>Missatge</div>
-</code>
+
+	<div id=notificacions ok>Missatge</div>
+	<div id=notificacions error>Missatge</div>
+
 
 Funciona amb tots els navegadors, però per a tenir una experiència 100% satisfactòria cal utilitzar navegadors actuals.
 
