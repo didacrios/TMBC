@@ -20,7 +20,7 @@ Utilitats per als projectes de TMBC
 - notificacions.css
 - notificacions.js
 
-	# Crea notificacions dinàmiques amb HTML5 i CSS3, notificacions d'error i de confirmació
+	Crea notificacions dinàmiques amb HTML5 i CSS3, notificacions d'error i de confirmació
 
 	<pre>
 			<div id=notificacions ok>Missatge</div>
