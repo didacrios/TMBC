@@ -22,10 +22,10 @@ Utilitats per als projectes de TMBC
 
 	# Crea notificacions dinàmiques amb HTML5 i CSS3, notificacions d'error i de confirmació
 
-	<html>
+	<pre>
 			<div id=notificacions ok>Missatge</div>
 			<div id=notificacions error>Missatge</div>
-	</html>
+	</pre>
 
 	# Funciona amb tots els navegadors, però per a tenir una experiència 100% satisfactòria cal utilitzar navegadors actuals.
 
