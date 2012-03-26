@@ -14,7 +14,7 @@
 
    Paginador de resultats
 
-   Última modificació # Dídac Rios # 20-03-2012 16:25:27 # 
+   Última modificació # Dídac Rios # 26-03-2012 17:35:31 #  
 
    	$pagina = new ts_paginador('ofertes'); 		// creem nou objecte, indicant la taula amb la que treballarem (ha d'haver una connexió mysql oberta)
 
@@ -144,13 +144,13 @@ class ts_paginador {
 
 	function mostrar_links($mostrarmax=7) {
 
-			 $pagina_actual = $this->pagina_actual();
-			 $this->pagines_totals();
-			 $pagtotals = $this->numeros_pagines;
+		$pagina_actual = $this->pagina_actual();
+		$this->pagines_totals();
+		$pagtotals = $this->numeros_pagines;
 
+		if (!$this->url) { $this->obtenim_url(); }
 
-			 if (!$this->url) { $this->obtenim_url(); }
-
+		if ($this->pagines_totals() >= 1) {
 
 			echo '<nav class=ts_paginacio>';
 
@@ -231,9 +231,11 @@ class ts_paginador {
 			}			
 
 			echo "</nav>";
+		}
 
 	}	
 	
 }
 ?>
+
 
