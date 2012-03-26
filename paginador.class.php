@@ -150,7 +150,7 @@ class ts_paginador {
 
 		if (!$this->url) { $this->obtenim_url(); }
 
-		if ($this->pagines_totals() >= 1) {
+		if ($pagtotals >= 1) {
 
 			echo '<nav class=ts_paginacio>';
 
