@@ -14,17 +14,17 @@
 
    Paginador de resultats
 
-   Última modificació # Dídac Rios # 26-03-2012 17:35:31 #  
+   Última modificació # Dídac # 2012-08-31 16:47:36
 
-   	$pagina = new ts_paginador('ofertes'); 		// creem nou objecte, indicant la taula amb la que treballarem (ha d'haver una connexió mysql oberta)
+   	$pagina = new ts_paginador('ofertes'); 			// creem nou objecte, indicant la taula amb la que treballarem (ha d'haver una connexió mysql oberta)
 
-		$pagina->ts_where($where); 								// si hi ha alguna condicio (buscador, etc..)
-		$pagina->ts_order('id DESC'); 						// ordenació 
+		$pagina->ts_where($where); 			// si hi ha alguna condicio (buscador, etc..)
+		$pagina->ts_order('id DESC'); 			// ordenació 
 		$pagina->estableix_resultats_pagina(10); 	// * Establim els resultats per pàgina, per defecte 30 
 		$pagina->estableix_varpagina('pagina'); 	// * Establim la variable de la pagina web.php?VARIABLE=1|2|3|4|5|N
-		$the_query = $pagina->fem_query(); 				// Fem la consulta
+		$the_query = $pagina->fem_query(); 		// Fem la consulta
 
-		$pagina->mostrar_links(7);								// Mostrem els links
+		$pagina->mostrar_links(7);			// Mostrem els links
 
 		* Les instancies amb asterisc (*) no són necessaries, només les cridarem en cas de voler canviar els valors x defecte
 
@@ -35,16 +35,16 @@
 class ts_paginador {
 
 	/* definim variables que s'utilitzaran */
-	
-	var $n_pag = 1; 				// Nombre de pagina actual, per defecte serà 1 
-	var $rpp = 30; 					// registres per pagina, per defecte 30
-	var $url;								// la pàgina en la que estem, per crear els links correctament
+
+	var $n_pag = 1; 		// Nombre de pagina actual, per defecte serà 1 
+	var $rpp = 30; 			// registres per pagina, per defecte 30
+	var $url;			// la pàgina en la que estem, per crear els links correctament
 	var $total_registres;		// total de registres de la consulta realitzada
-	var $taula;							// la taula amb la que treballarem
+	var $taula;			// la taula amb la que treballarem
 	var $numero_pagines;		// numero de pàgines totals que hi haurà
-	var $pvar = 'p'; 				// la variable que indicarà el numero de pàgina, per defecte es p ($_GET['p'])
-	var $where;							// where
-	var $order;							// order by
+	var $pvar = 'p'; 		// la variable que indicarà el numero de pàgina, per defecte es p ($_GET['p'])
+	var $where;			// where
+	var $order;			// order by
 
 
 	function ts_paginador($ts_taula) {
@@ -63,18 +63,18 @@ class ts_paginador {
 	}
 
 	function total_registres() {
-		
+
 		$query="SELECT COUNT(*) AS total FROM ".$this->taula;
 
 		if ($this->where!="") {
 			 $query .= $this->where;
 		}
 
-		$result=mysql_query($query);
+		$result=mysql_query($query) or die('L73:'. mysql_error());
 
 		$row=mysql_fetch_object($result);
 		$this->total_registres= $row->total;
-		
+
 	}
 
 	function pagina_actual() {
@@ -103,10 +103,14 @@ class ts_paginador {
 
 
 	function obtenim_url() {
-		
+
 		global $_GET;
 
-		$la_pagina = basename($_SERVER['PHP_SELF']);
+		//Debug($_SERVER);
+
+		//$la_pagina = basename($_SERVER['PHP_SELF']);
+		$la_pagina = $_SERVER['SCRIPT_URL'];
+
 
 		while (list ($clave, $val) = each ($_GET)) {
 			if($clave != $this->pvar) {
@@ -135,7 +139,9 @@ class ts_paginador {
 
 		$query .= " LIMIT ".$limitacio.",".$this->rpp;
 
-		$result = mysql_query($query);
+		$result = mysql_query($query) or die('L143:'. mysql_error());
+
+		//Debug($query);
 
 		return($result);
 
@@ -170,7 +176,7 @@ class ts_paginador {
 					</a>				
 				';
 			}
-			
+
 			$pap5 = $pagina_actual + $mostrarmax; // pagina actual + LES QUE VOLGUEM
 			$pam5 = $pagina_actual - $mostrarmax; // pagina actual - LES QUE VOLGUEM
 
@@ -178,34 +184,34 @@ class ts_paginador {
 			if (($pagina_actual + $mostrarmax) < $pagtotals && ($pagina_actual - $mostrarmax) >= 1) { // 1
 
 				$show_pag = '<span>...</span>';
-				
+
 				for ($tvar=$pam5;$tvar<=$pap5;$tvar++) {
 					if ($pagina_actual == $tvar) { $activeono = ' active'; } else { $activeono=''; }
 					$show_pag = $show_pag.'<a href="'.$this->url.''.$this->pvar.'='.$tvar.'" class="paginar'.$activeono.'">'.$tvar.'</a>';
 				}
-				
+
 				if ($pap5 != $pagtotals) { $show_pag = $show_pag.'<span>...</span>'; }
-				
+
 			} elseif (($pagina_actual + $mostrarmax) >= $pagtotals && ($pagina_actual - $mostrarmax) > 1) { //2
 
 				$show_pag = '<span>...</span>';
-				
+
 				for ($tvar=$pam5;$tvar<=$pagtotals;$tvar++) {			
 					if ($pagina_actual == $tvar) { $activeono = ' active'; } else { $activeono=''; }			
 					$show_pag = $show_pag.'<a href="'.$this->url.''.$this->pvar.'='.$tvar.'" class="paginar'.$activeono.'">'.$tvar.'</a>';
 				}
-				
+
 				if ($pap5 == $pagtotals) { $show_pag = $show_pag.'<span>...</span>'; }
-				
-						
+
+
 			} elseif (($pagina_actual + $mostrarmax) < $pagtotals && ($pagina_actual - $mostrarmax) < 1) { //3
-			
+
 				for ($tvar=1;$tvar<=$pap5;$tvar++) {
 					if ($pagina_actual == $tvar) { $activeono = ' active'; } else { $activeono=''; }			
 					$show_pag = $show_pag.'<a href="'.$this->url.''.$this->pvar.'='.$tvar.'" class="paginar'.$activeono.'">'.$tvar.'</a>';
 				}
 				$show_pag = $show_pag.'<span>...</span>';
-				
+
 			} else { //4
 				for ($tvar=1;$tvar<=$pagtotals;$tvar++) {
 					if ($pagina_actual == $tvar) { $activeono = ' active'; } else { $activeono=''; }
@@ -234,8 +240,6 @@ class ts_paginador {
 		}
 
 	}	
-	
+
 }
 ?>
-
-
