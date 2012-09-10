@@ -16,7 +16,7 @@
 
    Última modificació # Dídac # 2012-08-31 16:47:36
 
-   	$pagina = new ts_paginador('ofertes'); 			// creem nou objecte, indicant la taula amb la que treballarem (ha d'haver una connexió mysql oberta)
+   		$pagina = new ts_paginador('ofertes'); 		// creem nou objecte, indicant la taula amb la que treballarem (ha d'haver una connexió mysql oberta)
 
 		$pagina->ts_where($where); 			// si hi ha alguna condicio (buscador, etc..)
 		$pagina->ts_order('id DESC'); 			// ordenació 
