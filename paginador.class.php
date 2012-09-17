@@ -14,7 +14,7 @@
 
    Paginador de resultats
 
-   Última modificació # Dídac # 2012-08-31 16:47:36
+   Última modificació # Dídac # 2012-09-17 11:13:51
 
    		$pagina = new ts_paginador('ofertes'); 		// creem nou objecte, indicant la taula amb la que treballarem (ha d'haver una connexió mysql oberta)
 
@@ -106,11 +106,11 @@ class ts_paginador {
 
 		global $_GET;
 
-		//Debug($_SERVER);
-
-		//$la_pagina = basename($_SERVER['PHP_SELF']);
-		$la_pagina = $_SERVER['SCRIPT_URL'];
-
+		if (!empty($_SERVER['SCRIPT_URL'])) { 
+			$la_pagina = $_SERVER['SCRIPT_URL'];
+		} else {
+			$la_pagina = $_SERVER['REDIRECT_URL'];
+		}
 
 		while (list ($clave, $val) = each ($_GET)) {
 			if($clave != $this->pvar) {
