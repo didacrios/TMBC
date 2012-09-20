@@ -14,9 +14,9 @@
 
    Paginador de resultats
 
-   Última modificació # Dídac # 2012-09-17 11:13:51
+   Última modificació # Dídac # 2012-09-20 10:48:28
 
-   		$pagina = new ts_paginador('ofertes'); 		// creem nou objecte, indicant la taula amb la que treballarem (ha d'haver una connexió mysql oberta)
+   		$pagina = new ts_paginador('ofertes'); 			// creem nou objecte, indicant la taula amb la que treballarem (ha d'haver una connexió mysql oberta)
 
 		$pagina->ts_where($where); 			// si hi ha alguna condicio (buscador, etc..)
 		$pagina->ts_order('id DESC'); 			// ordenació 
@@ -141,7 +141,7 @@ class ts_paginador {
 
 		$result = mysql_query($query) or die('L143:'. mysql_error());
 
-		//Debug($query);
+		//echo($query);
 
 		return($result);
 
@@ -158,20 +158,20 @@ class ts_paginador {
 
 		if ($pagtotals >= 1) {
 
-			echo '<nav class=ts_paginacio>';
+			echo '<nav class="ts_paginacio">';
 
 			if ($pagina_actual == 1) {
 				echo '
-					<span class=inactiu>
+					<span class="inactiu">
 						«
 					</span>				
 				';
 			} else {
 				echo '
-					<a href="'.$this->url.'" class="paginar" title="Primera">
+					<a href="'.$this->url.'" class="paginar" title="Primera" data-numpag="1">
 						1
 					</a>		
-					<a href="'.$this->url.''.$this->pvar.'='.($pagina_actual-1).'" class="paginar" title="Anterior">
+					<a href="'.$this->url.''.$this->pvar.'='.($pagina_actual-1).'" class="paginar" title="Anterior"  data-numpag="'.($pagina_actual-1).'">
 						«
 					</a>				
 				';
@@ -187,7 +187,7 @@ class ts_paginador {
 
 				for ($tvar=$pam5;$tvar<=$pap5;$tvar++) {
 					if ($pagina_actual == $tvar) { $activeono = ' active'; } else { $activeono=''; }
-					$show_pag = $show_pag.'<a href="'.$this->url.''.$this->pvar.'='.$tvar.'" class="paginar'.$activeono.'">'.$tvar.'</a>';
+					$show_pag = $show_pag.'<a href="'.$this->url.''.$this->pvar.'='.$tvar.'" class="paginar'.$activeono.'" data-numpag="'.$tvar.'">'.$tvar.'</a>';
 				}
 
 				if ($pap5 != $pagtotals) { $show_pag = $show_pag.'<span>...</span>'; }
@@ -198,7 +198,7 @@ class ts_paginador {
 
 				for ($tvar=$pam5;$tvar<=$pagtotals;$tvar++) {			
 					if ($pagina_actual == $tvar) { $activeono = ' active'; } else { $activeono=''; }			
-					$show_pag = $show_pag.'<a href="'.$this->url.''.$this->pvar.'='.$tvar.'" class="paginar'.$activeono.'">'.$tvar.'</a>';
+					$show_pag = $show_pag.'<a href="'.$this->url.''.$this->pvar.'='.$tvar.'" data-numpag="'.$tvar.'" class="paginar'.$activeono.'">'.$tvar.'</a>';
 				}
 
 				if ($pap5 == $pagtotals) { $show_pag = $show_pag.'<span>...</span>'; }
@@ -208,14 +208,14 @@ class ts_paginador {
 
 				for ($tvar=1;$tvar<=$pap5;$tvar++) {
 					if ($pagina_actual == $tvar) { $activeono = ' active'; } else { $activeono=''; }			
-					$show_pag = $show_pag.'<a href="'.$this->url.''.$this->pvar.'='.$tvar.'" class="paginar'.$activeono.'">'.$tvar.'</a>';
+					$show_pag = $show_pag.'<a href="'.$this->url.''.$this->pvar.'='.$tvar.'" data-numpag="'.$tvar.'" class="paginar'.$activeono.'">'.$tvar.'</a>';
 				}
 				$show_pag = $show_pag.'<span>...</span>';
 
 			} else { //4
 				for ($tvar=1;$tvar<=$pagtotals;$tvar++) {
 					if ($pagina_actual == $tvar) { $activeono = ' active'; } else { $activeono=''; }
-					$show_pag = $show_pag.'<a href="'.$this->url.''.$this->pvar.'='.$tvar.'" class="paginar'.$activeono.'">'.$tvar.'</a>';
+					$show_pag = $show_pag.'<a href="'.$this->url.''.$this->pvar.'='.$tvar.'" data-numpag="'.$tvar.'" class="paginar'.$activeono.'">'.$tvar.'</a>';
 				}
 			}			
 
@@ -231,8 +231,8 @@ class ts_paginador {
 				';				
 			} else {
 				echo '			
-					<a href="'.$this->url.''.$this->pvar.'='.($pagina_actual+1).'" class="paginar" title="Següent">»</a>				
-					<a href="'.$this->url.''.$this->pvar.'='.$pagtotals.'" class="paginar" title="Última">'.$pagtotals.'</a>
+					<a href="'.$this->url.''.$this->pvar.'='.($pagina_actual+1).'" data-numpag="'.($pagina_actual+1).'" class="paginar" title="Següent">»</a>				
+					<a href="'.$this->url.''.$this->pvar.'='.$pagtotals.'" data-numpag="'.$pagtotals.'" class="paginar" title="Última">'.$pagtotals.'</a>
 				';				
 			}			
 
