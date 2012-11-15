@@ -46,7 +46,7 @@
 		var $taula;				// la taula amb la que treballarem
 		var $numero_pagines;	// numero de pàgines totals que hi haurà
 		var $pvar = 'p'; 		// la variable que indicarà el numero de pàgina, per defecte es p ($_GET['p'])
-		var $sel = '*'			// per defecte seleccionem tot *
+		var $sel = '*';			// per defecte seleccionem tot *
 		var $where;				// where
 		var $order;				// order by
 
