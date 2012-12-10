@@ -12,8 +12,8 @@ Pàginador mogut a un altre repositori: [Pàginador PHP](https://github.com/mits
 Crea notificacions dinàmiques amb HTML5 i CSS3, notificacions d'error i de confirmació
 
 
-	<div id=notificacions ok>Missatge</div>
-	<div id=notificacions error>Missatge</div>
+	<div id="notificacions" ok>Missatge</div>
+	<div id="notificacions" error>Missatge</div>
 
 -------------------------
 
