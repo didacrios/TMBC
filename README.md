@@ -1,18 +1,7 @@
 Utilitats per als projectes de TMBC
 =========
 
-- paginador.class.php
-- paginador.css
-
-Classe en PHP que pagina els registres d'una taula en MySQL amb l'opció de configurar:
-			- nom de la taula
-			- condicions
-			- criteri d'ordenacio de registres
-			- resultats per pàgina
-			- nom de la variable ($_GET) a utilitzar
-			- numerò d'enllaços a pàgines que es mostraran màxim
-
-Crea els enllaços a les diferents pàgines, aquests es poden configurar mitjançant l'arxiu d'estils paginador.css
+Pàginador mogut a un altre repositori: [Pàginador PHP](https://github.com/mitsurugi/Paginador-de-resultats)
 
 -------------------------
 
